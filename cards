@@ -1,0 +1,89 @@
+Cards to stimulate discussion at shell code clinic
+
+# backquote
+
+$(lsb_release -c -s)
+
+Korn's syntax for backquoting commands has been standard for ages
+now, and every sane shell supports it.  It nests, and quoting
+won't drive you insane.
+
+# errors
+
+set -e
+
+Shell has no exceptions to speak of, and it's easy to write a
+script that unwisely ignores errors in commands.  Perhaps it's
+better for a script to simply exit?
+
+# string manipulation
+
+${name%.*}
+
+Some string manipulations can be done in shell, without having to
+invoke a subprocess.
+
+# printf
+
+printf '\x1b32;1%s\n' Hello World
+
+It's great, and it's standard since forever.
+
+# Prompt
+
+PS1=$(blah blah blah)
+
+# Recursive functions
+
+factorial () 
+{ 
+  if [ "$1" = 0 ]; then
+    echo ${2-1};
+  else
+    factorial $(($1 - 1)) $((${2-1} * $1));
+  fi
+}
+
+Functions are great!
+
+# Random passwords
+
+</dev/urandom dd bs=1 count=8 2>&- | od -t x1 -An | tr -d ' '
+
+
+# args or input
+
+${@:-$(cat)}
+
+from @holman
+
+# getopts is for people who can't write loops
+
+while [ $# != 0 ]
+do
+  case $1 in
+    (-h|--help) usage; exit 0;;
+    (-v|--verbose) verbose=true; shift;;
+    (-*) usage 1>&2; exit 4;;
+    (*) break;;
+  esac
+done
+
+Tradition indigenous method.
+
+# Joining together arguments
+
+glue()(IFS=$1;shift;echo "$*")
+
+Hilariously obscure use of $* and also function definition using
+subshell brackets.
+
+# no output
+
+grep drj /etc/passwd > /dev/null 2>&1
+
+The order of redirects matters.
+
+# pipe stdout and stderr
+
+make 2>&1 | tee out
