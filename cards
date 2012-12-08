@@ -69,7 +69,7 @@ do
   esac
 done
 
-Tradition indigenous method.
+Traditional native folklore.
 
 # Joining together arguments
 
@@ -87,3 +87,67 @@ The order of redirects matters.
 # pipe stdout and stderr
 
 make 2>&1 | tee out
+
+# redirect forever
+
+exec >> /var/log/foo 2>&1
+
+exec with no command makes a permanent redirection for the rest
+of the shell script.
+
+# find within find
+
+find $(find / -name etc) -type f
+
+Finds all files within any directory called etc.
+
+# Split off
+
+IFS=
+
+Word splitting is very rarely useful, and often can be
+misleading and dangerous.  Consider switching it off at the
+beginning of a script.
+
+# why used head?
+
+cat /etc/passwd | sed 9q
+
+Kernighan and Pike pointed out in their 1983 classic
+"The UNIX Programming Environment" that sed can be
+used to get the first N lines of a file.  So why would
+anyone write a utility to do just that and only that?
+
+# PWD
+
+$(pwd)
+
+# The true working directory
+
+pwd
+env pwd
+
+# is it set or zero-length
+
+if [ -z $1 ]    # nearly works
+if [ -z "$1" ]  # really works
+if [ ! "$1" ]   # Also really works, but more obscure
+
+The tricky case is not when $1 is "" but when it is "= -z" (and
+others).
+
+# inequality
+
+if ! [ "$1" = thing ]
+if [ ! "$1" = thing ]
+if [ "$1" != thing ]
+
+Pretty much all the same.  Which is better?
+
+# sourcing is a builtin
+
+[ -e config ] &&
+. config
+
+The guard to check the file exists is necessary because
+otherwise the . command will exit the script!
