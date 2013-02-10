@@ -2,7 +2,7 @@ Cards to stimulate discussion at shell code clinic
 
 # backquote
 
-$(lsb_release -c -s)
+    $(lsb_release -c -s)
 
 Korn's syntax for backquoting commands has been standard for ages
 now, and every sane shell supports it.  It nests, and quoting
