@@ -27,6 +27,9 @@ def svg(lines, out):
         attr = {}
         if r.startswith('    '):
             attr['font-family'] = 'monospace'
+        if r.startswith('#'):
+            r = r[1:]
+            attr['font-weight'] = 'bold'
         r = r.strip()
         attr['x'] = "0"
         attr['y'] = "%.2f" % y
