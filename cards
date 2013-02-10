@@ -127,7 +127,7 @@ $(pwd)
 pwd
 env pwd
 
-# is it set or zero-length
+# is it unset or zero-length
 
 if [ -z $1 ]    # nearly works
 if [ -z "$1" ]  # really works
