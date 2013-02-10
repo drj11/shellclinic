@@ -4,9 +4,9 @@ Cards to stimulate discussion at shell code clinic
 
     $(lsb_release -c -s)
 
-Korn's syntax for backquoting commands has been standard for ages
-now, and every sane shell supports it.  It nests, and quoting
-won't drive you insane.
+Korn's syntax for backquoting commands:
+standard for ages; every sane shell supports it.
+It nests, and quoting won't drive you insane.
 
 # errors
 
