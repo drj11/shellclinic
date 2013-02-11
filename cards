@@ -152,3 +152,14 @@ Pretty much all the same.  Which is better?
 
 The guard to check the file exists is necessary:
 otherwise the . command will exit the script!
+
+# twiddles
+
+    cd
+    cd ~
+    cd ~dgk
+    cd ~-
+    printf ~-
+
+All sorts of fun to be had with ~.
+It doesn't have to be used with cd.
