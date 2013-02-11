@@ -57,7 +57,7 @@ def svg(lines, out):
                 recty = None
                 
         if r.startswith('#'):
-            r = r[1:]
+            r = re.sub(r'^#+ +', '', r)
             attr['font-weight'] = 'bold'
         r = r.rstrip()
         attr['x'] = "0"
