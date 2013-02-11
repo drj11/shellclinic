@@ -3,17 +3,14 @@
 import itertools
 import sys
 
-def feed_one(inp):
-    hashyet = False
+def yield_cards(inp):
+    """Split file into set of cards, each card is yielded as a group of lines.
+    """
     for hash,group in itertools.groupby(inp, lambda l: l.startswith('#')):
-        if hash and hashyet:
-            break
         if hash:
-            hashyet = True
-        if not hashyet:
-            continue
-        for l in group:
-            yield l
+            header = list(group)
+        else:
+            yield header + list(group)
 
 def svg(lines, out):
     # Width of height of the drawable area in millimetres
@@ -50,7 +47,8 @@ def svg(lines, out):
     out.write("</svg>\n")
 
 def main():
-    svg(feed_one(open('cards')), sys.stdout)
+    cards = list(yield_cards(open('cards')))
+    svg(cards[0], sys.stdout)
       
 if __name__ == '__main__':
     main()

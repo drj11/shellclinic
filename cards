@@ -1,5 +1,3 @@
-Cards to stimulate discussion at shell code clinic
-
 # backquote
 
     $(lsb_release -c -s)
