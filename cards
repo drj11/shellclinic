@@ -34,12 +34,11 @@ It's great, and it's standard since forever.
 
 # Recursive functions
 
-    factorial () 
-    { 
+    fact () { 
       if [ "$1" = 0 ]; then
-        echo ${2-1};
+        echo ${2-1}
       else
-        factorial $(($1 - 1)) $((${2-1} * $1));
+        fact $(($1-1)) $((${2-1}*$1))
       fi
     }
 
