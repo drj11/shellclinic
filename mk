@@ -4,6 +4,14 @@ import itertools
 import os
 import sys
 
+def xml_quote(s):
+    """Quote a string so that it can literally included as an
+    element's text.
+    """
+    s = s.replace('&', '&amp;')
+    s = s.replace('<', '&lt;')
+    return s
+
 def yield_cards(inp):
     """Split file into set of cards, each card is yielded as a group of lines.
     """
@@ -43,6 +51,7 @@ def svg(lines, out):
         if attr_text:
           attr_text = ' ' + attr_text
         if r:
+            r = xml_quote(r)
             out.write("""<text%s>%s</text>\n""" % (attr_text, r))
     out.write("</g>\n")
     out.write("</svg>\n")
