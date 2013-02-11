@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import itertools
+import os
 import sys
 
 def yield_cards(inp):
@@ -47,8 +48,13 @@ def svg(lines, out):
     out.write("</svg>\n")
 
 def main():
-    cards = list(yield_cards(open('cards')))
-    svg(cards[0], sys.stdout)
+    try:
+        os.mkdir('build')
+    except OSError:
+        pass
+    for i,card in enumerate(yield_cards(open('cards'))):
+        svg(card, open('build/card%03d.svg' % i, 'w'))
+        os.system("inkscape --export-pdf=build/card%03d.pdf build/card%03d.svg" % (i,i))
       
 if __name__ == '__main__':
     main()
