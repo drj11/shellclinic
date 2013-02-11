@@ -18,7 +18,7 @@ def feed_one(inp):
 def svg(lines, out):
     out.write("""<?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" height="59mm" width="88mm">
 """)
     y = 0
     linespace = 16
