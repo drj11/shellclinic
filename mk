@@ -40,6 +40,7 @@ def svg(lines, out):
         attr = {}
         if r.startswith('    '):
             attr['font-family'] = 'monospace'
+            out.write("""<rect stroke="none" fill="gray" x="%.2f" y="%.2f" width="88mm" height="16px" />\n""" % (-o, y+4-linespace))
         if r.startswith('#'):
             r = r[1:]
             attr['font-weight'] = 'bold'
