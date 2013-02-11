@@ -58,11 +58,10 @@ from @holman
 
 # getopts is for people who can't write loops
 
-    while [ $# != 0 ]
-    do
+    while [ $# != 0 ]; do
       case $1 in
         (-h|--help) usage; exit 0;;
-        (-v|--verbose) verbose=true; shift;;
+        (-q|--quiet) quiet=true; shift;;
         (-*) usage 1>&2; exit 4;;
         (*) break;;
       esac
@@ -131,10 +130,9 @@ anyone write a utility to do just that and only that?
 
     if [ -z $1 ]    # nearly works
     if [ -z "$1" ]  # really works
-    if [ ! "$1" ]   # Also really works, but more obscure
+    if [ ! "$1" ]   # more obscure
 
-The tricky case is not when $1 is "" but when it is
-"= -z" (and others).
+The tricky case is "= -z" (and others).
 
 # inequality
 
