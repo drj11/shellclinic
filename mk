@@ -2,6 +2,7 @@
 
 import itertools
 import os
+import re
 import sys
 
 def xml_quote(s):
@@ -10,6 +11,7 @@ def xml_quote(s):
     """
     s = s.replace('&', '&amp;')
     s = s.replace('<', '&lt;')
+    s = re.sub(r'^ +', lambda m: len(m.group(0)) * "&#160;", s)
     return s
 
 def yield_cards(inp):
@@ -41,6 +43,7 @@ def svg(lines, out):
         y += linespace
         attr = {}
         if r.startswith('    '):
+            r = r[4:]
             attr['font-family'] = 'monospace'
             if recty is None:
                 recty = y-linespace
@@ -56,7 +59,7 @@ def svg(lines, out):
         if r.startswith('#'):
             r = r[1:]
             attr['font-weight'] = 'bold'
-        r = r.strip()
+        r = r.rstrip()
         attr['x'] = "0"
         attr['y'] = "%.2f" % y
 
