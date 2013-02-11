@@ -24,7 +24,7 @@ without having to invoke a subprocess.
 
 # printf
 
-    printf '\x1b32;1%s\n' Hello World
+    printf '\x1b[32;1%sm\n' Hello World
 
 It's great, and it's standard since forever.
 

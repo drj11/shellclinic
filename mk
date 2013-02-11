@@ -35,12 +35,24 @@ def svg(lines, out):
     out.write("""<g transform="translate(%.2f,%.2f)">\n""" % (o,o))
     y = 0
     linespace = 16
+    recty = None
+    text = []
     for r in lines:
         y += linespace
         attr = {}
         if r.startswith('    '):
             attr['font-family'] = 'monospace'
-            out.write("""<rect stroke="none" fill="gray" x="%.2f" y="%.2f" width="88mm" height="16px" />\n""" % (-o, y+4-linespace))
+            if recty is None:
+                recty = y-linespace
+        else:
+            if recty is not None:
+                out.write(
+                  """<rect stroke="none" fill="#ddd"
+                    x="%.2f" y="%.2f"
+                    width="88mm" height="%.2fpx" />\n""" % (
+                      -o, recty, y-recty-linespace+8))
+                recty = None
+                
         if r.startswith('#'):
             r = r[1:]
             attr['font-weight'] = 'bold'
@@ -53,7 +65,8 @@ def svg(lines, out):
           attr_text = ' ' + attr_text
         if r:
             r = xml_quote(r)
-            out.write("""<text%s>%s</text>\n""" % (attr_text, r))
+            text.append("""<text%s>%s</text>\n""" % (attr_text, r))
+    out.writelines(text)
     out.write("</g>\n")
     out.write("</svg>\n")
 
