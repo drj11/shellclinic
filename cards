@@ -1,9 +1,9 @@
-# backquote
+# better than backquote
 
     $(lsb_release -c -s)
 
-Korn’s syntax for backquoting commands:
-standard for ages; every sane shell supports it.
+Korn’s syntax for command substitution.
+It’s been standard for ages, and every shell supports it.
 It nests, and quoting won’t drive you insane.
 
 # errors
