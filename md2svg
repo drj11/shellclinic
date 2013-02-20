@@ -80,7 +80,6 @@ def main():
         pass
     for i,card in enumerate(yield_cards(open('cards'))):
         svg(card, open('build/card%03d.svg' % i, 'w'))
-        os.system("inkscape --export-pdf=build/card%03d.pdf build/card%03d.svg" % (i,i))
       
 if __name__ == '__main__':
     main()
