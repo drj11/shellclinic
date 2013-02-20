@@ -2,16 +2,16 @@
 
     $(lsb_release -c -s)
 
-Korn's syntax for backquoting commands:
+Korn’s syntax for backquoting commands:
 standard for ages; every sane shell supports it.
-It nests, and quoting won't drive you insane.
+It nests, and quoting won’t drive you insane.
 
 # errors
 
     set -e
 
 Shell has no exceptions to speak of;
-it's easy to write a script that unwisely
+it’s easy to write a script that unwisely
 ignores errors in commands.
 Is it better for a script to simply exit?
 
@@ -26,7 +26,7 @@ without having to invoke a subprocess.
 
     printf '\x1b[32;1%sm\n' Hello World
 
-It's great, and it's standard since forever.
+It’s great, and it’s standard since forever.
 
 # Prompt
 
@@ -157,4 +157,4 @@ otherwise the . command will exit the script!
     printf ~-
 
 All sorts of fun to be had with ~.
-It doesn't have to be used with cd.
+It doesn’t have to be used with cd.
