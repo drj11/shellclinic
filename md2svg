@@ -42,9 +42,10 @@ def svg(lines, out):
     for r in lines:
         y += linespace
         attr = {}
+        attr['font-family'] = 'FreeSans'
         if r.startswith('    '):
             r = r[4:]
-            attr['font-family'] = 'monospace'
+            attr['font-family'] = 'monospace, FreeMono'
             if recty is None:
                 recty = y-linespace
         else:
